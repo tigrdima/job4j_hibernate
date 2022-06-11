@@ -13,7 +13,7 @@ public class CarMark {
     private int id;
     private String name;
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "carMark")
     private List<CarModel> carModels = new ArrayList<>();
 
     public CarMark() {
@@ -66,5 +66,13 @@ public class CarMark {
     @Override
     public int hashCode() {
         return Objects.hash(id);
+    }
+
+    @Override
+    public String toString() {
+        return "CarMark{"
+                + "id=" + id
+                + ", name='" + name + '\''
+                + '}';
     }
 }

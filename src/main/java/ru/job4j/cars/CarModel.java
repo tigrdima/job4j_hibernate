@@ -12,11 +12,16 @@ public class CarModel {
     private int id;
     private String name;
 
+    @ManyToOne
+    @JoinColumn(name = "carMark_id")
+    private CarMark carMark;
+
     public CarModel() {
     }
 
-    public CarModel(String name) {
+    public CarModel(String name, CarMark carMark) {
         this.name = name;
+        this.carMark = carMark;
     }
 
     public int getId() {
@@ -35,6 +40,14 @@ public class CarModel {
         this.name = name;
     }
 
+    public CarMark getCarMark() {
+        return carMark;
+    }
+
+    public void setCarMark(CarMark carMark) {
+        this.carMark = carMark;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -50,5 +63,14 @@ public class CarModel {
     @Override
     public int hashCode() {
         return Objects.hash(id);
+    }
+
+    @Override
+    public String toString() {
+        return "CarModel{"
+                + "id=" + id
+                + ", name='" + name + '\''
+                + ", carMark=" + carMark
+                + '}';
     }
 }
